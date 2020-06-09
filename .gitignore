@@ -1,4 +1,7 @@
-venv
+/venv
 caixa/__pycache__
 caixa/migrations/__pycache__
 financeiro/__pycache__
+.env
+templates/static/admin
+templates/static/admin-lte
