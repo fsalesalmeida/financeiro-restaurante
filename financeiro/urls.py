@@ -15,8 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import render
+
+def administrador(request):
+    return render(request, 'admin_index.html')
+
 
 urlpatterns = [
     path('', include('caixa.urls')),
     path('admin/', admin.site.urls),
+    path('administrador/', administrador)
 ]
