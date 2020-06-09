@@ -1,25 +1,27 @@
 {% extends 'base.html' %}
 
 {% block conteudo %}
-<div class="container">
-	<h1 class="display-4">CAIXA</h3>
-	<hr>
-	<div class="container h-75">
-		<div class="row h-75 justify-content-center align-items-center">
-			<div class="col-xs-3 p-5 border border-muted rounded">
+
+	<div class="container">
+		<div class="row justify-content-center align-items-center">
+			<div class="col-xs-3 card">
+			  <div class="card-header">
+			    <h3 class="card-title"><i class="fas fa-wallet"></i> Caixa Inicial</h3>
+			  </div>
+			  <div class="card-body p-4">
  				<form id="caixa_inicial">
  					<div class="form-group">
-			    	<label for="texto">Caixa Inicial</label>
+			    	<label for="texto">Insira o valor:</label>
 			      <input v-model="inputText" class="form-control" type="number" id="texto" name="texto" />
    				</div>
-   				<button class="btn btn-success btn-sm" @click="cleanInput" type="submit">Limpar campo</button>
-   			</form> 
+   				<button class="btn btn-success btn-sm" @click="cleanInput" type="reset">Limpar campo</button>
+   			</form>
 			  <div class="h4 d-flex justify-content-center text-muted border-bottom p-2 mt-3">
 			    ${realMoney}
 			  </div>
     	</div>
 	  </div>
  	</div>
-</div>
+ 	</div>
 
 {% endblock conteudo %}
