@@ -6,7 +6,7 @@ It exposes the WSGI callable as a module-level variable named ``application``.
 For more information on this file, see
 https://docs.djangoproject.com/en/3.0/howto/deployment/wsgi/
 """
-from dotenv import load_dotenv
+from django import load_dotenv
 load_dotenv()
 import os
 
