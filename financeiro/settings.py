@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
-from django import load_dotenv
+from dotenv import load_dotenv
 load_dotenv()
 import os
 
