@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
 /dist
-webpack-stats.json
+/public
+webpack-stats.js
 
 # local env files
 .env.local
