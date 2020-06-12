@@ -1,4 +1,4 @@
-{% load static %}
+{% load render_bundle from webpack_loader %}
 
 <html lang="pt">
 <head>
@@ -49,5 +49,6 @@
   <!-- /.content-wrapper -->
 
   {% include 'partials/_footer.html' %}
+  {% render_bundle 'app' %}
 </body>
 </html>
