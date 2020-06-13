@@ -78,7 +78,14 @@ Primeiro, copie o arquivo __./caixa/.env.example__ com o nome de apenas `.env` e
 
 ##### Runserver
 
-Utilize esse comando para subir o servidor
+Será necessário dois terminais, um para o django e o outro para o Vue.
+
+```sh
+cd frontend
+npm run serve
+```
+
+Agora no outro terminal. Caso não esteja no ambienten virtual(venv), entre para dar o comando:
 
 ```sh
 python manage.py runserver
