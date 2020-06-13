@@ -2,3 +2,5 @@
 __pycache__
 static/admin
 static/admin-lte
+frontend/webpack-stats.json
+
