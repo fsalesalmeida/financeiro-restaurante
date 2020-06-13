@@ -1,4 +1,4 @@
 /venv
 __pycache__
-admin
-admin-lte
+static/admin
+static/admin-lte
