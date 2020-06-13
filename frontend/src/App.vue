@@ -1,32 +1,32 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Início</router-link> |
-      <router-link to="/caixa">Caixa</router-link>
+  <div class="wrapper">
+    <nav-bar></nav-bar>
+    <side-bar></side-bar>
+    <div class="content-wrapper">
+      <content-header
+        v-if="$route.name != 'Início'"
+        :pagina-atual="$route.name"
+      ></content-header>
+      <router-view />
     </div>
-    <router-view />
+    <footer class="main-footer">
+      <strong
+        >Copyright &copy; 2020 - Controle Financeiro para Restaurante.</strong
+      >
+    </footer>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import ContentHeader from "@/components/ContentHeader.vue";
+import SideBar from "@/components/SideBar.vue";
+import NavBar from "@/components/NavBar.vue";
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+export default {
+  components: {
+    ContentHeader,
+    SideBar,
+    NavBar
   }
-}
-</style>
+};
+</script>

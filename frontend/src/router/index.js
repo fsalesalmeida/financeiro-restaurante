@@ -7,7 +7,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Inicio",
+    name: "Início",
     component: Home
   },
   {
@@ -23,7 +23,7 @@ const routes = [
 
 const router = new VueRouter({
   mode: "history",
-  base: '',
+  base: "",
   routes
 });
 
