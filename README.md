@@ -81,7 +81,12 @@ c:\> python manage.py collectstatic  # ou 'py' ao invés de 'python'
 ```sh
 npm install
 ```
-
+Instale o Vue CLI
+```sh
+npm install -g @vue/cli
+# OU
+yarn global add @vue/cli
+```
 ## Subir servidor local
 
 #### Variáveis de ambiente:
@@ -100,6 +105,7 @@ npm run serve
 Agora no outro terminal. Caso não esteja no ambienten virtual(venv), entre para dar o comando:
 
 ```sh
+cd backend
 python manage.py runserver
 ```
 
