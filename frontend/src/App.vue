@@ -3,10 +3,7 @@
     <nav-bar></nav-bar>
     <side-bar></side-bar>
     <div class="content-wrapper">
-      <content-header
-        v-if="$route.name != 'Início'"
-        :pagina-atual="$route.name"
-      ></content-header>
+      <content-header></content-header>
       <router-view />
     </div>
     <footer class="main-footer">
