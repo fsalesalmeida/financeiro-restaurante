@@ -23,17 +23,12 @@
                 </div>
                 <button
                   class="btn btn-success btn-sm"
-                  @click="cleanInput"
-                  type="reset"
+                  @click="abrirCaixa"
+                  type="button"
                 >
-                  Limpar campo
+                  Abrir caixa
                 </button>
               </form>
-              <div
-                class="h4 d-flex justify-content-center text-muted border-bottom p-2 mt-3"
-              >
-                {{ realMoney }}
-              </div>
             </div>
           </div>
         </div>
@@ -50,14 +45,22 @@ export default {
     };
   },
   methods: {
-    cleanInput() {
-      this.inputText = "";
+    abrirCaixa() {
+      this.$swal({
+        title: 'Abertura do caixa',
+        text: "Você tem certeza da abertura do caixa?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#28a745',
+        cancelButtonColor: '#dc3545',
+        confirmButtonText: 'Sim',
+        cancelButtonText: 'Não',
+      }).then((result) => {
+        if (result.value) {
+          this.$router.push({ name: 'Caixa Aberto'});
+        }
+      });
     }
   },
-  computed: {
-    realMoney() {
-      return `R$ ${this.inputText}`;
-    }
-  }
 };
 </script>
