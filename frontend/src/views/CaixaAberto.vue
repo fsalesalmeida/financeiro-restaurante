@@ -12,6 +12,7 @@
             <div class="form-group">
               <label for="entrada">Entrada:</label>
               <input v-model="entrada" class="form-control" type="number" id="entrada" name="entrada" />
+              <button @click="submitEntrada" class="btn btn-primary">Enviar</button>
             </div>
             <div class="form-group">
               <label for="despesa">Despesas:</label>
@@ -38,6 +39,11 @@ export default {
       despesa: 0,
       sangria: 0,
     };
+  },
+  methods: {
+    submitEntrada() {
+      // POST 'Criar uma entrada associando ao ID do Caixa
+    }
   }
 };
 </script>
