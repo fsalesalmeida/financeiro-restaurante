@@ -21,12 +21,16 @@ const routes = [
   {
     path: "/caixa-aberto",
     name: "Caixa Aberto",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/CaixaAberto.vue")
-  }
+  },
+  {
+    path: "/caixa-fechar/:caixaId",
+    name: "Fechar Caixa",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/CaixaFechar.vue")
+  },
+  
 ];
 
 const router = new VueRouter({

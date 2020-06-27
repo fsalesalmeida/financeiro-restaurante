@@ -51,8 +51,6 @@ export default {
         text: "Você tem certeza da abertura do caixa?",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#28a745",
-        cancelButtonColor: "#dc3545",
         confirmButtonText: "Sim",
         cancelButtonText: "Não"
       }).then(result => {
