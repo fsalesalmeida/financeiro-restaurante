@@ -47,20 +47,20 @@ export default {
   methods: {
     abrirCaixa() {
       this.$swal({
-        title: 'Abertura do caixa',
+        title: "Abertura do caixa",
         text: "Você tem certeza da abertura do caixa?",
-        icon: 'warning',
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#28a745',
-        cancelButtonColor: '#dc3545',
-        confirmButtonText: 'Sim',
-        cancelButtonText: 'Não',
-      }).then((result) => {
+        confirmButtonColor: "#28a745",
+        cancelButtonColor: "#dc3545",
+        confirmButtonText: "Sim",
+        cancelButtonText: "Não"
+      }).then(result => {
         if (result.value) {
-          this.$router.push({ name: 'Caixa Aberto'});
+          this.$router.push({ name: "Caixa Aberto" });
         }
       });
     }
-  },
+  }
 };
 </script>

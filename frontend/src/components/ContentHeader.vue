@@ -26,6 +26,6 @@
 
 <script>
 export default {
-  name: "content-header",
+  name: "content-header"
 };
 </script>
