@@ -104,8 +104,8 @@
               </div>
             </div>
           </div>
-          <button class="btn btn-success btn-block mt-3" type="button">
-            Fechar caixa
+          <button class="btn btn-success btn-block mt-3" type="button" @click="fecharCaixa">
+            Preparar Fechamento
           </button>
         </div>
       </div>
@@ -131,6 +131,7 @@ export default {
       despesa: 0,
       sangria: 0,
       tipoDespesa: null,
+      caixa_id: '',
       selectTipo: [
         { text: "Escolha...", value: null },
         { text: "Fornecedor", value: 1 },
@@ -151,6 +152,20 @@ export default {
     },
     fetchDespesaTipo() {
       // GET "Lista todos os tipos de despesa"
+    },
+    fecharCaixa() {
+      this.$swal({
+        title: "Fechar caixa",
+        text: "Você tem certeza do fechamento do caixa?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sim",
+        cancelButtonText: "Não",
+      }).then(result => {
+        if (result.value) {
+          this.$router.push({ name: "Fechamento", params: { caixaId: this.caixa_id } });
+        }
+      });
     }
   }
 };
