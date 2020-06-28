@@ -5,8 +5,8 @@ from django.utils import timezone
 
 class ControleCaixa(models.Model):
     cd_ControleCaixa = models.AutoField(primary_key=True, null=False)
-    dt_AberturaCaixa = models.DateTimeField(null=False, default=timezone.now)
-    dt_FechamentoCaixa = models.DateTimeField(null=False, default=timezone.now)
+    dt_AberturaCaixa = models.DateTimeField(null=False, auto_now_add=True)
+    dt_FechamentoCaixa = models.DateTimeField(null=False, auto_now_add=True)
 
 class Caixa(models.Model):
     cd_Caixa = models.AutoField(primary_key=True, null=False)
@@ -26,18 +26,18 @@ class DespesaTipo(models.Model):
     cd_DespesaTipo = models.AutoField(primary_key=True, null=False)
     ds_DespesaTipo = models.CharField(max_length=45, null=False)
 
-class Despesas(models.Model):
+class Despesa(models.Model):
     cd_Despesa = models.AutoField(primary_key=True, null=False)
     cd_Caixa = models.ForeignKey(Caixa, null=False, on_delete=models.DO_NOTHING)
     cd_DespesaTipo = models.ForeignKey(DespesaTipo, null=False, on_delete=models.DO_NOTHING)
     vl_Despesa = models.DecimalField(max_digits=12, decimal_places=2, default=0)
 
-class CaixaEntrada(models.Model):
+class Entrada(models.Model):
     cd_Entrada = models.AutoField(primary_key=True, null=False)
     cd_Caixa = models.ForeignKey(Caixa, null=False, on_delete=models.DO_NOTHING)
     vl_Entrada = models.DecimalField(max_digits=12, decimal_places=2, default=0)
 
-class CaixaSangria(models.Model):
+class Sangria(models.Model):
     cd_Sangria = models.AutoField(primary_key=True, null=False)
     cd_Caixa = models.ForeignKey(Caixa, null=False, on_delete=models.DO_NOTHING)
     vl_Sangria = models.DecimalField(max_digits=12, decimal_places=2, default=0)

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'caixa.apps.CaixaConfig',
+    'rest_framework',
     'webpack_loader',
 ]
 
