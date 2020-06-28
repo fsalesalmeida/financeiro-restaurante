@@ -126,12 +126,13 @@ export default {
   name: "caixa-aberto",
   data() {
     return {
+      caixa: {},
       caixaInicial: "200,00",
       entrada: 0,
       despesa: 0,
       sangria: 0,
+      tipoDespesas: [],
       tipoDespesa: null,
-      caixa_id: '',
       selectTipo: [
         { text: "Escolha...", value: null },
         { text: "Fornecedor", value: 1 },
@@ -153,17 +154,20 @@ export default {
     fetchDespesaTipo() {
       // GET "Lista todos os tipos de despesa"
     },
+    fetchCaixa() {
+      // GET 'Exibe o caixa pelo seu id'
+    },
     fecharCaixa() {
       this.$swal({
         title: "Fechar caixa",
-        text: "Você tem certeza do fechamento do caixa?",
+        text: "Você tem certeza que quer ir para o fechamento?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "Sim",
         cancelButtonText: "Não",
       }).then(result => {
         if (result.value) {
-          this.$router.push({ name: "Fechamento", params: { caixaId: this.caixa_id } });
+          this.$router.push({ name: "Fechamento", params: { caixaId: 1 } });
         }
       });
     }

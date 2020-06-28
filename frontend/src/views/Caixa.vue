@@ -14,7 +14,7 @@
                 <div class="form-group">
                   <label for="texto">Insira o valor:</label>
                   <input
-                    v-model="inputText"
+                    v-model="caixaInicial"
                     class="form-control"
                     type="number"
                     id="texto"
@@ -41,7 +41,7 @@ export default {
   name: "Caixa",
   data() {
     return {
-      inputText: ""
+      caixaInicial: "",
     };
   },
   methods: {
@@ -55,7 +55,8 @@ export default {
         cancelButtonText: "Não"
       }).then(result => {
         if (result.value) {
-          this.$router.push({ name: "Caixa Aberto" });
+          //POST 'Criar um CaixaControle e consequentemente um Caixa, retorna o ID do caixa'
+          this.$router.push({ name: "Caixa Aberto", params: { caixaId: 1 } });
         }
       });
     }
