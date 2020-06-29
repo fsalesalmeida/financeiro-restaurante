@@ -21,7 +21,13 @@
                     name="texto"
                   />
                 </div>
-                <button class="btn btn-success btn-sm" @click="abrirCaixa" type="button">Abrir caixa</button>
+                <button
+                  class="btn btn-success btn-sm"
+                  @click="abrirCaixa"
+                  type="button"
+                >
+                  Abrir caixa
+                </button>
               </form>
             </div>
           </div>
@@ -60,19 +66,19 @@ export default {
               this.controleCaixa = res.data.cd_ControleCaixa;
               const data = {
                 cd_ControleCaixa: res.data.cd_ControleCaixa,
-                vl_CaixaInicial: this.caixaInicial,
+                vl_CaixaInicial: this.caixaInicial
               };
-              storeCaixa(data).then(res => {
-                this.caixa = res.data;
-                this.$router.push({
-                  name: "Caixa Aberto",
-                  params: { caixaId: res.data.cd_Caixa }
+              storeCaixa(data)
+                .then(res => {
+                  this.caixa = res.data;
+                  this.$router.push({
+                    name: "Caixa Aberto",
+                    params: { caixaId: res.data.cd_Caixa }
+                  });
                 })
-              })
                 .catch(err => this.error.push(err.response));
             })
-            .catch(err => this.error.push(err));
-          
+            .catch(err => this.error.push(err.response));
         }
       });
     }
