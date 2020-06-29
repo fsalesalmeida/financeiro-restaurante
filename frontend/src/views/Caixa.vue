@@ -10,22 +10,19 @@
               </h3>
             </div>
             <div class="card-body p-4">
-              <form id="caixa_inicial">
+              <form @submit.prevent="abrirCaixa" id="caixa_inicial">
                 <div class="form-group">
                   <label for="texto">Insira o valor:</label>
                   <input
                     v-model="caixaInicial"
+                    required
                     class="form-control"
                     type="number"
                     id="texto"
                     name="texto"
                   />
                 </div>
-                <button
-                  class="btn btn-success btn-sm"
-                  @click="abrirCaixa"
-                  type="button"
-                >
+                <button class="btn btn-success btn-sm" type="submit">
                   Abrir caixa
                 </button>
               </form>
@@ -44,9 +41,7 @@ export default {
   data() {
     return {
       caixaInicial: "",
-      controleCaixa: "",
-      caixa: "",
-      error: []
+      errors: []
     };
   },
   methods: {
@@ -76,9 +71,9 @@ export default {
                     params: { caixaId: res.data.cd_Caixa }
                   });
                 })
-                .catch(err => this.error.push(err.response));
+                .catch(err => this.errors.push(err.response));
             })
-            .catch(err => this.error.push(err.response));
+            .catch(err => this.errors.push(err.response));
         }
       });
     }

@@ -27,9 +27,13 @@
                         name="entrada"
                         required
                       />
-                      <span class="error invalid-feedback">{{ msg.error1 }}</span>
+                      <span class="error invalid-feedback">{{
+                        msg.error1
+                      }}</span>
                     </div>
-                    <button class="btn btn-primary margin-btn">criar entrada</button>
+                    <button class="btn btn-primary margin-btn">
+                      criar entrada
+                    </button>
                   </form>
                 </div>
               </div>
@@ -43,7 +47,9 @@
                   <form @submit.prevent="criarDespesa">
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
-                        <label class="input-group-text" for="tipoDespesa">Tipo</label>
+                        <label class="input-group-text" for="tipoDespesa"
+                          >Tipo</label
+                        >
                       </div>
                       <select
                         ref="tipo"
@@ -56,9 +62,12 @@
                           v-for="tipo in tipoDespesas"
                           :key="tipo.cd_DespesaTipo"
                           :value="tipo.cd_DespesaTipo"
-                        >{{ tipo.ds_DespesaTipo }}</option>
+                          >{{ tipo.ds_DespesaTipo }}</option
+                        >
                       </select>
-                      <span class="error invalid-feedback">{{ msg.error2 }}</span>
+                      <span class="error invalid-feedback">{{
+                        msg.error2
+                      }}</span>
                     </div>
                     <div class="form-group">
                       <input
@@ -70,7 +79,9 @@
                         name="despesa"
                         required
                       />
-                      <span class="error invalid-feedback">{{ msg.error3 }}</span>
+                      <span class="error invalid-feedback">{{
+                        msg.error3
+                      }}</span>
                     </div>
                     <button class="btn btn-primary">criar despesa</button>
                   </form>
@@ -94,9 +105,13 @@
                         name="sangria"
                         required
                       />
-                      <span class="error invalid-feedback">{{ msg.error4 }}</span>
+                      <span class="error invalid-feedback">{{
+                        msg.error4
+                      }}</span>
                     </div>
-                    <button class="btn btn-primary margin-btn">criar sangria</button>
+                    <button class="btn btn-primary margin-btn">
+                      criar sangria
+                    </button>
                   </form>
                 </div>
               </div>
@@ -106,15 +121,31 @@
             class="btn btn-success btn-block mt-3"
             type="button"
             @click="fecharCaixa"
-          >Preparar Fechamento</button>
+          >
+            Preparar Fechamento
+          </button>
         </div>
       </div>
     </div>
-    <div v-if="toast" id="toastsContainerTopRight" class="toasts-top-right fixed">
-      <div class="toast bg-success fade show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div
+      v-if="toast"
+      id="toastsContainerTopRight"
+      class="toasts-top-right fixed"
+    >
+      <div
+        class="toast bg-success fade show"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
         <div class="toast-header">
           <strong class="mr-auto">Sucesso</strong>
-          <button data-dismiss="toast" type="button" class="ml-2 mb-1 close" aria-label="Close">
+          <button
+            data-dismiss="toast"
+            type="button"
+            class="ml-2 mb-1 close"
+            aria-label="Close"
+          >
             <span aria-hidden="true" @click="toast = false">×</span>
           </button>
         </div>

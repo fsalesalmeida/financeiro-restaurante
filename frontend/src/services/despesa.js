@@ -5,7 +5,7 @@ export function getDespesasByCaixa(caixaId) {
 }
 
 export function storeDespesas(data) {
-  console.log(data)
+  console.log(data);
   return axios.post("despesa/", {
     cd_Caixa: data.idCaixa,
     cd_DespesaTipo: data.idTipo,

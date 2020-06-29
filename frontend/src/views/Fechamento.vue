@@ -97,12 +97,17 @@ export default {
   },
   computed: {
     faturamento() {
-      this.entradas.reduce((acc, value) => this.entradaTotal += value.vl_Entrada);
-      this.despesas.reduce((acc, value) => this.despesaTotal += value.vl_Despesa);
-      this.sangrias.reduce((acc, value) => this.sangriaTotal += value.vl_Sangria);
-
-      return parseFloat(this.dinheiro) + parseFloat(this.credito) + parseFloat(this.debito) + parseFloat(this.refeicao) + parseFloat(this.online) +
-        parseFloat(this.sangriaTotal) + parseFloat(this.despesaTotal) - parseFloat(this.caixa.vl_CaixaInicial) - parseFloat(this.entradaTotal);
+      return (
+        parseFloat(this.dinheiro) +
+        parseFloat(this.credito) +
+        parseFloat(this.debito) +
+        parseFloat(this.refeicao) +
+        parseFloat(this.online) +
+        this.sangriaTotal +
+        this.despesaTotal -
+        parseFloat(this.caixa.vl_CaixaInicial) -
+        this.entradaTotal
+      );
     }
   },
   methods: {
@@ -129,35 +134,47 @@ export default {
             entradas: this.entradaTotal,
             faturamento: this.faturamento
           })
-          .then(res => console.log(res.data))
-          .catch(err => this.errors.push(err.response))
+            .then(res => console.log(res.data))
+            .catch(err => this.errors.push(err.response));
         }
       });
     },
-    fetchSangrias() {
+    async fetchSangrias() {
       // GET 'Lista todas as sangrias pelo id do caixa'
-      getSangriasByCaixa(this.$route.params.caixaId)
-        .then(res => this.sangrias = res.data)
+      await getSangriasByCaixa(this.$route.params.caixaId)
+        .then(res => (this.sangrias = res.data))
         .catch(err => this.errors.push(err.response));
+      await this.sangrias.reduce(
+        (acc, value) => (this.sangriaTotal += parseFloat(value.vl_Sangria)),
+        {}
+      );
     },
-    fetchEntradas() {
+    async fetchEntradas() {
       // GET 'Lista todas as entradas pelo id do caixa'
-      getEntradasByCaixa(this.$route.params.caixaId)
-        .then(res => this.entradas = res.data)
+      await getEntradasByCaixa(this.$route.params.caixaId)
+        .then(res => (this.entradas = res.data))
         .catch(err => this.errors.push(err.response));
+      await this.entradas.reduce(
+        (acc, value) => (this.entradaTotal += parseFloat(value.vl_Entrada)),
+        {}
+      );
     },
-    fetchDespesas() {
+    async fetchDespesas() {
       // GET 'Lista todas as despesas pelo id do caixa'
-      getDespesasByCaixa(this.$route.params.caixaId)
-        .then(res => this.despesas = res.data)
+      await getDespesasByCaixa(this.$route.params.caixaId)
+        .then(res => (this.despesas = res.data))
         .catch(err => this.errors.push(err.response));
+      await this.despesas.reduce(
+        (acc, value) => (this.despesaTotal += parseFloat(value.vl_Despesa)),
+        {}
+      );
     },
     fetchCaixa() {
       // GET 'Exibe o caixa pelo seu id'
       showCaixa(this.$route.params.caixaId)
         .then(res => (this.caixa = res.data))
         .catch(err => this.error.push(err.response));
-    },
+    }
   },
 
   mounted() {
