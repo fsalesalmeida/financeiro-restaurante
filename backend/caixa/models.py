@@ -6,7 +6,7 @@ from django.utils import timezone
 class ControleCaixa(models.Model):
     cd_ControleCaixa = models.AutoField(primary_key=True, null=False)
     dt_AberturaCaixa = models.DateTimeField(null=False, auto_now_add=True)
-    dt_FechamentoCaixa = models.DateTimeField(null=False, auto_now_add=True)
+    dt_FechamentoCaixa = models.DateTimeField(null=False, auto_now=True)
 
 class Caixa(models.Model):
     cd_Caixa = models.AutoField(primary_key=True, null=False)
