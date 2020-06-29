@@ -29,8 +29,7 @@ const routes = [
     name: "Fechamento",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Fechamento.vue")
-  },
-  
+  }
 ];
 
 const router = new VueRouter({

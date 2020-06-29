@@ -10,22 +10,19 @@
               </h3>
             </div>
             <div class="card-body p-4">
-              <form id="caixa_inicial">
+              <form @submit.prevent="abrirCaixa" id="caixa_inicial">
                 <div class="form-group">
                   <label for="texto">Insira o valor:</label>
                   <input
                     v-model="caixaInicial"
+                    required
                     class="form-control"
                     type="number"
                     id="texto"
                     name="texto"
                   />
                 </div>
-                <button
-                  class="btn btn-success btn-sm"
-                  @click="abrirCaixa"
-                  type="button"
-                >
+                <button class="btn btn-success btn-sm" type="submit">
                   Abrir caixa
                 </button>
               </form>
@@ -37,11 +34,14 @@
   </div>
 </template>
 <script>
+import { storeCaixa, storeControleCaixa } from "@/services/caixa";
+
 export default {
   name: "Caixa",
   data() {
     return {
       caixaInicial: "",
+      errors: []
     };
   },
   methods: {
@@ -56,7 +56,24 @@ export default {
       }).then(result => {
         if (result.value) {
           //POST 'Criar um CaixaControle e consequentemente um Caixa, retorna o ID do caixa'
-          this.$router.push({ name: "Caixa Aberto", params: { caixaId: 1 } });
+          storeControleCaixa()
+            .then(res => {
+              this.controleCaixa = res.data.cd_ControleCaixa;
+              const data = {
+                cd_ControleCaixa: res.data.cd_ControleCaixa,
+                vl_CaixaInicial: this.caixaInicial
+              };
+              storeCaixa(data)
+                .then(res => {
+                  this.caixa = res.data;
+                  this.$router.push({
+                    name: "Caixa Aberto",
+                    params: { caixaId: res.data.cd_Caixa }
+                  });
+                })
+                .catch(err => this.errors.push(err.response));
+            })
+            .catch(err => this.errors.push(err.response));
         }
       });
     }

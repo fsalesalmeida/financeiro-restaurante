@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
-from caixa.viewsets import DespesaByCaixaList
+from caixa.viewsets import DespesaByCaixaList, EntradaByCaixaList, SangriaByCaixaList
 from .routers import router
 from django.views.generic import TemplateView
 
@@ -24,8 +24,8 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('api/', include(router.urls)),
     url('^api/despesa/caixa/(?P<caixa_id>\w+)/$', DespesaByCaixaList.as_view()),
-    url('^api/entrada/caixa/(?P<caixa_id>\w+)/$', DespesaByCaixaList.as_view()),
-    url('^api/sangria/caixa/(?P<caixa_id>\w+)/$', DespesaByCaixaList.as_view()),
+    url('^api/entrada/caixa/(?P<caixa_id>\w+)/$', EntradaByCaixaList.as_view()),
+    url('^api/sangria/caixa/(?P<caixa_id>\w+)/$', SangriaByCaixaList.as_view()),
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='index.html'), name='app'),
 ]
