@@ -1,10 +1,10 @@
 <template>
   <!-- Content Header (Page header) -->
-  <div class="content-header">
+  <div v-if="$route.name != 'Início'" class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">{{ paginaAtual }}</h1>
+          <h1 class="m-0 text-dark">{{ $route.name }}</h1>
         </div>
         <!-- /.col -->
         <div class="col-sm-6">
@@ -12,7 +12,7 @@
             <li class="breadcrumb-item">
               <router-link to="/">Início</router-link>
             </li>
-            <li class="breadcrumb-item active">{{ paginaAtual }}</li>
+            <li class="breadcrumb-item active">{{ $route.name }}</li>
           </ol>
         </div>
         <!-- /.col -->
@@ -26,12 +26,6 @@
 
 <script>
 export default {
-  name: "content-header",
-  props: {
-    paginaAtual: {
-      type: String,
-      required: true
-    }
-  }
+  name: "content-header"
 };
 </script>

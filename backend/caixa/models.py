@@ -10,7 +10,7 @@ class ControleCaixa(models.Model):
 
 class Caixa(models.Model):
     cd_Caixa = models.AutoField(primary_key=True, null=False)
-    cd_ControleCaixa = models.ForeignKey(ControleCaixa, unique=True, null=False, on_delete=models.DO_NOTHING)
+    cd_ControleCaixa = models.OneToOneField(ControleCaixa, null=False, on_delete=models.DO_NOTHING)
     vl_CaixaInicial = models.DecimalField(max_digits=12, decimal_places=2, default=0)
     vl_Dinheiro = models.DecimalField(max_digits=12, decimal_places=2, default=0)
     vl_CartaoCredito = models.DecimalField(max_digits=12, decimal_places=2, default=0)
@@ -19,7 +19,8 @@ class Caixa(models.Model):
     vl_Online = models.DecimalField(max_digits=12, decimal_places=2, default=0)
     vl_Sangrias = models.DecimalField(max_digits=12, decimal_places=2, default=0)
     vl_Despesas = models.DecimalField(max_digits=12, decimal_places=2, default=0)
-    vl_Entradas= models.DecimalField(max_digits=12, decimal_places=2, default=0)
+    vl_Entradas = models.DecimalField(max_digits=12, decimal_places=2, default=0)
+    vl_Faturamento = models.DecimalField(max_digits=12, decimal_places=2, default=0)
 
 class DespesaTipo(models.Model):
     cd_DespesaTipo = models.AutoField(primary_key=True, null=False)

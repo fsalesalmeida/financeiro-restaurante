@@ -14,7 +14,7 @@
                 <div class="form-group">
                   <label for="texto">Insira o valor:</label>
                   <input
-                    v-model="inputText"
+                    v-model="caixaInicial"
                     class="form-control"
                     type="number"
                     id="texto"
@@ -23,17 +23,12 @@
                 </div>
                 <button
                   class="btn btn-success btn-sm"
-                  @click="cleanInput"
-                  type="reset"
+                  @click="abrirCaixa"
+                  type="button"
                 >
-                  Limpar campo
+                  Abrir caixa
                 </button>
               </form>
-              <div
-                class="h4 d-flex justify-content-center text-muted border-bottom p-2 mt-3"
-              >
-                {{ realMoney }}
-              </div>
             </div>
           </div>
         </div>
@@ -46,17 +41,24 @@ export default {
   name: "Caixa",
   data() {
     return {
-      inputText: ""
+      caixaInicial: "",
     };
   },
   methods: {
-    cleanInput() {
-      this.inputText = "";
-    }
-  },
-  computed: {
-    realMoney() {
-      return `R$ ${this.inputText}`;
+    abrirCaixa() {
+      this.$swal({
+        title: "Abertura do caixa",
+        text: "Você tem certeza da abertura do caixa?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sim",
+        cancelButtonText: "Não"
+      }).then(result => {
+        if (result.value) {
+          //POST 'Criar um CaixaControle e consequentemente um Caixa, retorna o ID do caixa'
+          this.$router.push({ name: "Caixa Aberto", params: { caixaId: 1 } });
+        }
+      });
     }
   }
 };
