@@ -21,13 +21,7 @@
                     name="texto"
                   />
                 </div>
-                <button
-                  class="btn btn-success btn-sm"
-                  @click="abrirCaixa"
-                  type="button"
-                >
-                  Abrir caixa
-                </button>
+                <button class="btn btn-success btn-sm" @click="abrirCaixa" type="button">Abrir caixa</button>
               </form>
             </div>
           </div>
@@ -37,11 +31,16 @@
   </div>
 </template>
 <script>
+import { storeCaixa, storeControleCaixa } from "@/services/caixa";
+
 export default {
   name: "Caixa",
   data() {
     return {
       caixaInicial: "",
+      controleCaixa: "",
+      caixa: "",
+      error: []
     };
   },
   methods: {
@@ -56,7 +55,24 @@ export default {
       }).then(result => {
         if (result.value) {
           //POST 'Criar um CaixaControle e consequentemente um Caixa, retorna o ID do caixa'
-          this.$router.push({ name: "Caixa Aberto", params: { caixaId: 1 } });
+          storeControleCaixa()
+            .then(res => {
+              this.controleCaixa = res.data.cd_ControleCaixa;
+              const data = {
+                cd_ControleCaixa: res.data.cd_ControleCaixa,
+                vl_CaixaInicial: this.caixaInicial,
+              };
+              storeCaixa(data).then(res => {
+                this.caixa = res.data;
+                this.$router.push({
+                  name: "Caixa Aberto",
+                  params: { caixaId: res.data.cd_Caixa }
+                })
+              })
+                .catch(err => this.error.push(err.response));
+            })
+            .catch(err => this.error.push(err));
+          
         }
       });
     }

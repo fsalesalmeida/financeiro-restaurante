@@ -11,7 +11,6 @@ class CaixaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Caixa
         fields = '__all__'
-        depth = 1
 
 
 class DespesaTipoSerializer(serializers.ModelSerializer):
