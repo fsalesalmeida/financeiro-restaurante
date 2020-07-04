@@ -5,7 +5,9 @@
         <div class="card-header">
           <h3 class="card-title">
             <i class="fas fa-wallet"></i>
-            Fechar Caixa
+            Fechar Caixa - Despesas: R$ {{ despesaTotal.toFixed(2) }} |
+            Sangrias: R$ {{ sangriaTotal.toFixed(2) }} | Entradas: R$
+            {{ entradaTotal.toFixed(2) }}
           </h3>
         </div>
         <form @submit.prevent="fechamento">
@@ -133,9 +135,20 @@ export default {
             despesas: this.despesaTotal,
             entradas: this.entradaTotal,
             faturamento: this.faturamento
-          })
-            .then(res => console.log(res.data))
-            .catch(err => this.errors.push(err.response));
+          }).then(res => {
+            console.log(res);
+            this.$swal(
+              "Caixa Fechado!",
+              `Faturamento de R$ ${this.faturamento.toFixed(2)}`,
+              "success"
+            )
+              .then(value => {
+                if (value) {
+                  this.$router.push({ name: "Caixa" });
+                }
+              })
+              .catch(err => this.errors.push(err.response));
+          });
         }
       });
     },
