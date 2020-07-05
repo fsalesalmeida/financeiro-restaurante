@@ -5,7 +5,7 @@
         <div class="card-header">
           <h3 class="card-title">
             <i class="fas fa-wallet"></i>
-            Caixa Aberto
+            Caixa Aberto - R$ {{ caixa.vl_CaixaInicial }}
           </h3>
         </div>
         <div class="card-body">
