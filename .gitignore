@@ -1,7 +1,6 @@
 /venv
 __pycache__
 .vscode
-frontend/static/admin
-frontend/static/admin-lte
+frontend/static
 frontend/webpack-stats.json
 
