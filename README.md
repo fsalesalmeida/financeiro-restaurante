@@ -118,6 +118,7 @@ Agora vá no navegador e coloque: `localhost:8000`
 - python-dotenv==0.13.0
 - django-adminlte3==0.1.6
 - django-webpack-loader==0.7.0
+- django-cors-headers==3.4.0
 
 
 ## Contribuidores
