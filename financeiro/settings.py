@@ -36,7 +36,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    # 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'caixa.apps.CaixaConfig',
     'rest_framework',
+    'rest_framework.authtoken',
+    'usuario',
     'corsheaders',
 ]
 
@@ -140,3 +142,5 @@ CORS_ORIGIN_WHITELIST = (
 )
 
 CSRF_COOKIE_NAME = "XSRF-TOKEN"
+
+AUTH_USER_MODEL = 'usuario.User'
