@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.urls import path, include
 from django.conf.urls import url
+from django.conf.urls.static import static
 from caixa.viewsets import DespesaByCaixaList, EntradaByCaixaList, SangriaByCaixaList
 from .routers import router
 
@@ -24,4 +25,5 @@ urlpatterns = [
     url('^api/despesa/caixa/(?P<caixa_id>\w+)/$', DespesaByCaixaList.as_view()),
     url('^api/entrada/caixa/(?P<caixa_id>\w+)/$', EntradaByCaixaList.as_view()),
     url('^api/sangria/caixa/(?P<caixa_id>\w+)/$', SangriaByCaixaList.as_view()),
+    path('api/user/', include('user.urls', 'user_api'))
 ]
