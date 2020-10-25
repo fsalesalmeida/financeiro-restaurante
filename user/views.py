@@ -9,7 +9,7 @@ from user.serializers import RegistrationSerializer
 def registration_view(request):
 
     if request.method == 'POST':
-        serializer = RegistrationSerializer(data=resquest.data)
+        serializer = RegistrationSerializer(data=request.data)
         data = {}
         if serializer.is_valid():
             user = serializer.save()
