@@ -13,9 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
-from caixa.viewsets import DespesaByCaixaList, EntradaByCaixaList, SangriaByCaixaList
+from caixa.viewsets import (DespesaByCaixaList, EntradaByCaixaList,
+                            SangriaByCaixaList)
 from .routers import router
 
 
@@ -24,4 +26,6 @@ urlpatterns = [
     url('^api/despesa/caixa/(?P<caixa_id>\w+)/$', DespesaByCaixaList.as_view()),
     url('^api/entrada/caixa/(?P<caixa_id>\w+)/$', EntradaByCaixaList.as_view()),
     url('^api/sangria/caixa/(?P<caixa_id>\w+)/$', SangriaByCaixaList.as_view()),
+    path('admin/', admin.site.urls),
+    path('api/user/', include('user.urls', 'user'))
 ]
