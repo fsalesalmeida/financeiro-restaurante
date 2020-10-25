@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view
 
 from user.serializers import RegistrationSerializer
 
-@api_view(['POST',])
+@api_view(['POST', ])
 def registration_view(request):
 
     if request.method == 'POST':
@@ -19,4 +19,3 @@ def registration_view(request):
         else:
             data = serializer.errors
         return Response(data)
-# Create your views here.

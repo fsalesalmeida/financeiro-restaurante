@@ -18,13 +18,13 @@ class DespesaTipoViewSet(viewsets.ModelViewSet):
     serializer_class = DespesaTipoSerializer
 
 
-class DespesaViewSet(viewsets.ModelViewSet):
-    queryset = Despesa.objects.all()
-    serializer_class = DespesaSerializer
+class DespesaCaixaViewSet(viewsets.ModelViewSet):
+    queryset = DespesaCaixa.objects.all()
+    serializer_class = DespesaCaixaSerializer
 
          
 class DespesaByCaixaList(generics.ListAPIView):
-    serializer_class = DespesaSerializer
+    serializer_class = DespesaCaixaSerializer
 
     def get_queryset(self):
         """
@@ -32,7 +32,7 @@ class DespesaByCaixaList(generics.ListAPIView):
         the maker passed in the URL
         """
         caixa = self.kwargs['caixa_id']
-        return Despesa.objects.all().filter(cd_Caixa=caixa)
+        return DespesaCaixa.objects.all().filter(cd_Caixa=caixa)
 
 
 class EntradaByCaixaList(generics.ListAPIView):

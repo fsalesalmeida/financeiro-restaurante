@@ -19,9 +19,9 @@ class DespesaTipoSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class DespesaSerializer(serializers.ModelSerializer):
+class DespesaCaixaSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Despesa
+        model = DespesaCaixa
         fields = '__all__'
 
 

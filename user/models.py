@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractUser, BaseUserManager
 
 
 class MyUserManager(BaseUserManager):
@@ -17,7 +17,7 @@ class MyUserManager(BaseUserManager):
         user.set_password(password)
         user.save(using=self._db)
         return user
-    
+
     def create_superuser(self, email, name, password):
         user = self.create_user(
             email=self.normalize_email(email),
@@ -32,7 +32,13 @@ class MyUserManager(BaseUserManager):
         return user
 
 
-class User(AbstractBaseUser):
+class CargoFuncionario(models.Model):
+    cd_CargoFuncionario = models.AutoField(primary_key=True, null=False)
+    ds_CargoFuncionario = models.CharField(max_length=45, null=False)
+
+
+class User(AbstractUser):
+    CargoFuncionario = models.ForeignKey(CargoFuncionario, null=False, on_delete=models.DO_NOTHING)
     name = models.CharField(max_length=30)
     email = models.EmailField(max_length=50, unique=True, verbose_name="email")
     date_joined = models.DateTimeField(verbose_name="data_joined", auto_now_add=True)
@@ -55,5 +61,3 @@ class User(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
-    
-    
