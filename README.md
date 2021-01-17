@@ -45,12 +45,6 @@ Agora instale as dependências:
 $ pip install -r requirements.txt
 ```
 
-Está pronto, mas antes de subir o servidor dê o comando do Django `collectstatic`, para instalar arquivos estáticos de algumas dependências (entre na pasta `Backend` para executar esse comando):
-
-```sh
-$ python3 manage.py collectstatic
-```
-
 Windows(cmd):
 
 Ative o ambiente virtual:
@@ -66,18 +60,12 @@ Agora instale as dependências:
 c:\> pip install -r requirements.txt
 ```
 
-Utilize este comando para finalizar, estando na pasta `Backend`:
-
-```sh
-c:\> python manage.py collectstatic  # ou 'py' ao invés de 'python'
-```
-
 
 ## Subir servidor local
 
 #### Variáveis de ambiente:
 
-Primeiro, copie o arquivo __./caixa/.env.example__ com o nome de apenas `.env` e verifique se os valores das variáveis de ambiente estão corretos. 
+Primeiro, copie o arquivo __./caixa/.env.example__ com o nome de apenas `.env` e verifique se os valores das variáveis de ambiente estão corretos.
 
 #### Runserver
 
@@ -85,7 +73,6 @@ Abra o terminal e utilize o comando abaixo:
 
 
 ```sh
-cd backend
 python manage.py runserver
 ```
 
