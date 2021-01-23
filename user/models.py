@@ -3,13 +3,16 @@ from django.contrib.auth.models import AbstractUser, BaseUserManager
 
 
 class MyUserManager(BaseUserManager):
-    def create_user(self, email, name, password=None):
+    def create_user(self, CargoFuncionario, email, name, password=None):
         if not email:
             raise ValueError("Usuários precisam ter um email")
         if not name:
             raise ValueError("Usuários precisam ter um nome")
+        if not CargoFuncionario:
+            raise ValueError("Usuários precisam ter um cargo")
 
         user = self.model(
+            CargoFuncionario=CargoFuncionario,
             email=self.normalize_email(email),
             name=name
         )
@@ -47,6 +50,7 @@ class User(AbstractUser):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
+    username = None
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['name']
