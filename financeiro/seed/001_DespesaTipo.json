@@ -1,0 +1,23 @@
+[
+    {
+        "model": "caixa.despesatipo",
+        "pk": 1,
+        "fields": {
+            "ds_DespesaTipo": "Pagamento"
+        }
+    },
+    {
+        "model": "caixa.despesatipo",
+        "pk": 2,
+        "fields": {
+            "ds_DespesaTipo": "Fornecedor"
+        }
+    },
+    {
+        "model": "caixa.despesatipo",
+        "pk": 3,
+        "fields": {
+            "ds_DespesaTipo": "Petit Cash"
+        }
+    }
+]

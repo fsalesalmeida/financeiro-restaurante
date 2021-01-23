@@ -1,0 +1,16 @@
+[
+    {
+        "model": "user.cargofuncionario",
+        "pk": 1,
+        "fields": {
+            "ds_CargoFuncionario": "Atendente"
+        }
+    },
+    {
+        "model": "user.cargofuncionario",
+        "pk": 2,
+        "fields": {
+            "ds_CargoFuncionario": "Gerente"
+        }
+    }
+]
