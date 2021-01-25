@@ -22,7 +22,7 @@ class DespesaCaixaViewSet(viewsets.ModelViewSet):
     queryset = DespesaCaixa.objects.all()
     serializer_class = DespesaCaixaSerializer
 
-         
+
 class DespesaByCaixaList(generics.ListAPIView):
     serializer_class = DespesaCaixaSerializer
 
