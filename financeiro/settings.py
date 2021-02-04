@@ -30,8 +30,6 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -43,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'caixa.apps.CaixaConfig',
-    'user',
+    'user.apps.UserConfig',
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
@@ -143,11 +141,8 @@ STATICFILES_DIRS = [
 ]
 # STATIC_ROOT = os.path.join(BASE_DIR, '../frontend/static')
 
-
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:8080',
-    'http://127.0.0.1:8080'
-)
+ALLOWED_HOSTS=['*']
+CORS_ORIGIN_ALLOW_ALL = True
 
 CSRF_COOKIE_NAME = "XSRF-TOKEN"
 
